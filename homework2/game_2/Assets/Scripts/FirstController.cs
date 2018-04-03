@@ -13,10 +13,10 @@ public class FirstController : MonoBehaviour, IUserAction, ISceneController
     GameObject Boat;
     GameObject[] boatchair = new GameObject[2];
 
-    Vector3 priestLeftPos = new Vector3(-16, 2, 0);
-    Vector3 priestRightPos = new Vector3(14, 2, 0);
-    Vector3 devilStartPos = new Vector3(-11, 2, 0);
-    Vector3 devilRightPos = new Vector3(9, 2, 0);
+    Vector3 priestLeftPos = new Vector3(-15.5f, 2, 0);
+    Vector3 priestRightPos = new Vector3(13.5f, 2, 0);
+    Vector3 devilStartPos = new Vector3(-10.5f, 2, 0);
+    Vector3 devilRightPos = new Vector3(8.5f, 2, 0);
 
     Vector3 BoatLeftPos = new Vector3(-4, 0, 0);
     Vector3 BoatRightPos = new Vector3(4, 0, 0);
