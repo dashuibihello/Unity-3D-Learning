@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UserGUI : MonoBehaviour {
+    public Text mytext;
+    string c;
     float width = Screen.width / 6;
     float height = Screen.height / 16;
     float y = 4 * Screen.height / 5;
@@ -12,10 +15,12 @@ public class UserGUI : MonoBehaviour {
     void Start () {
         myobj = SSDirector.getInstance().currentSceneController as FirstController;
         actions = SSDirector.getInstance().currentSceneController as IUserAction;
+        //mytext = this.transform.Find("Canvas").Find("mytext").GetComponent<Text>();
+        c = "";
     }
 
     void OnGUI() {
-        if(myobj.state != FirstController.State.MOVING)
+        if (myobj.state != FirstController.State.MOVING)
         {
             if (GUI.Button(new Rect(Screen.width / 20, y, width, height), "Devil Gets On"))
             {
@@ -63,6 +68,6 @@ public class UserGUI : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
-	}
+       
+    }
 }
