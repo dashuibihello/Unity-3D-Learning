@@ -2,6 +2,7 @@
 
 ## 视频地址
 [http://v.youku.com/v_show/id_XMzU0NTcwNDUyOA==.html?firsttime=29](http://v.youku.com/v_show/id_XMzU0NTcwNDUyOA==.html?firsttime=29)
+ps: 视频中物体大小不会变化，但在录制视频后更改，现在大小会不同
 
 ## 游戏内容要求：
 1. 游戏有 n 个 round，每个 round 都包括10 次 trial；
