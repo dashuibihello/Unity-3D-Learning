@@ -16,6 +16,7 @@ public class PatrolFactory : MonoBehaviour
     public GameObject getPatrol()
     {
         GameObject patrol = Instantiate(Resources.Load<GameObject>("prefabs/Patrol"), new Vector3(posx[count], 0, posz[count]), Quaternion.identity);
+        patrol.AddComponent<Patrol>();
         count++;
         return patrol;
     }

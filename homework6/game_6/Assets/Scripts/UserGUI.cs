@@ -22,7 +22,7 @@ public class UserGUI : MonoBehaviour {
     void OnGUI()
     {
         ScoreText.text = "Score: " + score.getScore().ToString();
-        GUI.Label(new Rect(4 * Screen.width / 5, 2 * Screen.height / 5, Screen.width / 8, Screen.height / 2), "将右下角的白色方块移出左下角缺口就完成游戏.巡逻兵在设定范围内感知到玩家，会自动追击玩家计分：玩家每次甩掉一个巡逻兵计一分，与巡逻兵碰撞游戏结束；");
+        GUI.Label(new Rect(4 * Screen.width / 5, 2 * Screen.height / 5, Screen.width / 8, Screen.height / 2), "巡逻兵在设定范围内感知到玩家，会自动追击玩家计分：玩家每次甩掉一个巡逻兵计一分，与巡逻兵碰撞游戏结束；");
         if (!actions.GameStart())
         {
             if (GUI.Button(new Rect(4 * Screen.width / 5, Screen.height / 5, Screen.width / 9, Screen.width / 16), "Start"))
@@ -31,7 +31,7 @@ public class UserGUI : MonoBehaviour {
             }
             
         }
-        if(actions.GameOver() || actions.GameStart())
+        if(actions.GameOver() && actions.GameStart())
         {
             if (GUI.Button(new Rect(4 * Screen.width / 5, Screen.height / 5, Screen.width / 9, Screen.width / 16), "Restart"))
             {

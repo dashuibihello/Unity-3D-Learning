@@ -19,12 +19,12 @@ public class Player : Subject
         speed = 8.0f;
     }
 
-    public override void Attach(IHandle h)
+    public override void AddListener(IHandle h)
     {
         listeners.Add(h);
     }
 
-    public override void Detach(IHandle h)
+    public override void Remove(IHandle h)
     {
         listeners.Remove(h);
     }

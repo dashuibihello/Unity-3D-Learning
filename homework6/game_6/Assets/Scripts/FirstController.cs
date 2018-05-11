@@ -14,7 +14,6 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction, ISc
     private IHandle sc;
 
     private bool canOperation;
-    private bool create;
     private bool isStart;
     private int bearNum;
     private int ellephantNum;
@@ -29,13 +28,11 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction, ISc
         director.currentSceneController.LoadResources();
         director.currentSceneController.CreatePatrols();
 
-        scoreRecorder = Singleton<ScoreRecorder>.Instance;
         sc = director.currentSceneController as IHandle;
         sub = player.GetComponent<Player>();
-        sub.Attach(sc);
+        sub.AddListener(sc);
         ani = player.GetComponent<Animator>();
         isStart = false;
-        create = false;
     }
 
     // Use this for initialization
@@ -54,16 +51,18 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction, ISc
         PatrolFactory patrolFactory = Singleton<PatrolFactory>.Instance;
         for (int i = 0; i < 6; i++)
         {
-            
             GameObject patrol = patrolFactory.getPatrol();
-            patrol.AddComponent<Patrol>();
             patrol.name = "Patrol" + i;
+            sub = player.GetComponent<Player>();
+            sub.AddListener(patrol.GetComponent<Patrol>());
+            patrol.GetComponent<Patrol>().register(GetComponent<ScoreRecorder>().addScore);
         }
     }
     
     public void LoadResources()
     {
         GameObject Map = Instantiate(Resources.Load<GameObject>("prefabs/Map"), new Vector3(0, 0, 0), Quaternion.identity);
+        Map.name = "Map";
         player = Instantiate(Resources.Load<GameObject>("prefabs/Player"), new Vector3(2, 0, -6.5f), Quaternion.identity);
         player.AddComponent<Player>();
     }
@@ -104,7 +103,7 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction, ISc
 
     public void Restart()
     {
-        EditorSceneManager.LoadScene("main");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("main");
     }
 
     public bool GameOver()
@@ -114,7 +113,7 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction, ISc
 
     public int getScore()
     {
-        return scoreRecorder.getScore();
+        return GetComponent<ScoreRecorder>().getScore();
     }
     
     public void Reaction(bool isLive, Vector3 pos)

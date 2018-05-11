@@ -1,27 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScoreRecorder : MonoBehaviour, IHandle
+public class ScoreRecorder : MonoBehaviour
 {
     private int score;
-    private bool playerIsLive;
-
-    public void Reaction(bool isLive, Vector3 pos)
-    {
-        playerIsLive = isLive;
-    }
 
     public int getScore()
     {
         return score;
     }
 
-    public void addScore(int s)
+    public void addScore()
     {
-        if (playerIsLive)
-        {
-            score++;
-        }
+        score++;
     }
 
     public void resetScore()
@@ -29,14 +20,8 @@ public class ScoreRecorder : MonoBehaviour, IHandle
         score = 0;
     }
 
-    void Awake()
+    void Start()
     {
-        playerIsLive = true;
-        score = 0;
-    }
-
-    void Update()
-    {
-
+        resetScore();
     }
 }
